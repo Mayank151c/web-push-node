@@ -1,9 +1,9 @@
-const express = require('express');
 const webpush = require('web-push');
+const express = require('express');
 
-const publicVapidKey = process.env.PUBLIC_VAPID_KEY;
-const privateVapidKey = process.env.PRIVATE_VAPID_KEY;
-
+const publicVapidKey = 'BDcLiOqg-sELmwErOvJcSWWHFEIsyQb9zh1SiYkUV6yEuVl_WhYzUTeAj8ZwE91HVMcuVicPiYS8aSdlJkCdfeU';
+const privateVapidKey = 'PsDozmWpLee7PPTJf9h9EbjQwXvx_7_ecpVeaXZnOU8';
+const PORT = process.env.PORT || 3000;
 // Replace with your email
 webpush.setVapidDetails('mailto:val@karpov.io', publicVapidKey, privateVapidKey);
 
@@ -25,4 +25,6 @@ app.post('/subscribe', (req, res) => {
 
 app.use(require('express-static')('./'));
 
-app.listen(3000);
+app.listen(PORT,()=>{
+  console.log(`Server running on port ${PORT}`)
+});
